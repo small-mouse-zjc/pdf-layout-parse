@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler" version="24.02.0">
+<page number="1" position="absolute" top="0" left="0" height="1188" width="918">
+	<fontspec id="0" size="16" family="BXGEVL+DejaVuSerif" color="#000000"/>
+	<fontspec id="1" size="20" family="BXGEVL+DejaVuSerif" color="#000000"/>
+	<fontspec id="2" size="35" family="ECACOO+DejaVuSerif" color="#000000"/>
+	<fontspec id="3" size="22" family="BXGEVL+DejaVuSerif" color="#000000"/>
+	<fontspec id="4" size="17" family="HCDTYZ+DejaVuSerif" color="#000000"/>
+	<fontspec id="5" size="23" family="ECACOO+DejaVuSerif" color="#000000"/>
+	<fontspec id="6" size="19" family="BXGEVL+DejaVuSerif" color="#000000"/>
+	<fontspec id="7" size="17" family="BXGEVL+DejaVuSerif" color="#000000"/>
+<text top="33" left="296" width="326" height="19" font="0">Journal of Synthetic Layout Research, Vol. 3, No. 2, 2024</text>
+<text top="1124" left="455" width="9" height="23" font="1">1</text>
+<text top="92" left="216" width="721" height="41" font="2"><b>Parsing Two-Column Papers Without Crossing the Gutter</b></text>
+<text top="142" left="275" width="264" height="25" font="3">A. Author, B. Author and C. Author</text>
+<text top="173" left="313" width="162" height="20" font="4"><i>Institute of Layout Studies</i></text>
+<text top="216" left="92" width="71" height="27" font="5"><b>Abstract</b></text>
+<text top="244" left="92" width="622" height="22" font="6">Two-column scientific layouts are common in engineering and life-science publishing, and naive</text>
+<text top="261" left="92" width="602" height="22" font="6">text extraction walks straight across the gutter. This synthetic manuscript exercises a parser</text>
+<text top="279" left="92" width="582" height="22" font="6">on a controllable layout: spanning title, spanning abstract, two body columns, a full-width</text>
+<text top="296" left="92" width="617" height="22" font="6">table, a numbered display equation, a figure caption and a reference list. The intended reading</text>
+<text top="313" left="92" width="632" height="22" font="6">order is column-major inside each band and top-to-bottom across bands. Margins carry a running</text>
+<text top="331" left="92" width="359" height="22" font="6">banner and a folio that must never reach the body text.</text>
+<text top="356" left="92" width="167" height="27" font="5"><b>1. Column Ordering</b></text>
+<text top="385" left="92" width="269" height="22" font="6">Reading order is a property of the layout,</text>
+<text top="402" left="92" width="258" height="22" font="6">not of the content stream. A parser that</text>
+<text top="419" left="92" width="257" height="22" font="6">sorts glyphs by their y coordinate alone</text>
+<text top="436" left="92" width="264" height="22" font="6">will interleave the left and right columns</text>
+<text top="454" left="92" width="244" height="22" font="6">line by line, producing sentences that</text>
+<text top="471" left="92" width="295" height="22" font="6">alternate between two unrelated paragraphs.</text>
+<text top="488" left="92" width="281" height="22" font="6">Sorting by x first is equally wrong, because</text>
+<text top="505" left="92" width="232" height="22" font="6">it destroys the vertical flow inside a</text>
+<text top="523" left="92" width="295" height="22" font="6">column. The correct model cuts the page into</text>
+<text top="540" left="92" width="283" height="22" font="6">bands at spanning elements and then reads</text>
+<text top="557" left="92" width="277" height="22" font="6">each column of a band from top to bottom.</text>
+<text top="356" left="489" width="200" height="27" font="5"><b>2. Table Reconstruction</b></text>
+<text top="385" left="489" width="268" height="22" font="6">Table reconstruction needs cell geometry</text>
+<text top="402" left="489" width="275" height="22" font="6">rather than whitespace heuristics. When a</text>
+<text top="419" left="489" width="280" height="22" font="6">tabular block is drawn without ruling lines,</text>
+<text top="436" left="489" width="273" height="22" font="6">the only reliable signal is the alignment of</text>
+<text top="454" left="489" width="273" height="22" font="6">cell boxes across rows, combined with the</text>
+<text top="471" left="489" width="262" height="22" font="6">vertical gaps between cells inside a row.</text>
+<text top="488" left="489" width="294" height="22" font="6">Column anchors derived from those boxes let</text>
+<text top="505" left="489" width="294" height="22" font="6">a grid be rebuilt as Markdown, which is what</text>
+<text top="523" left="489" width="279" height="22" font="6">downstream parameter extraction expects.</text>
+<text top="906" left="92" width="339" height="22" font="6">Table 1. Measured layout statistics on three layouts.</text>
+<text top="923" left="92" width="38" height="20" font="7">layout</text>
+<text top="923" left="254" width="51" height="20" font="7">columns</text>
+<text top="923" left="416" width="64" height="20" font="7">gutter (pt)</text>
+<text top="923" left="589" width="33" height="20" font="7">score</text>
+<text top="943" left="92" width="36" height="20" font="7">single</text>
+<text top="943" left="254" width="8" height="20" font="7">1</text>
+<text top="943" left="416" width="8" height="20" font="7">0</text>
+<text top="943" left="589" width="27" height="20" font="7">0.91</text>
+<text top="962" left="92" width="22" height="20" font="7">two</text>
+<text top="962" left="254" width="8" height="20" font="7">2</text>
+<text top="962" left="416" width="15" height="20" font="7">34</text>
+<text top="962" left="589" width="27" height="20" font="7">0.97</text>
+<text top="982" left="92" width="32" height="20" font="7">three</text>
+<text top="982" left="254" width="8" height="20" font="7">3</text>
+<text top="982" left="416" width="15" height="20" font="7">18</text>
+<text top="982" left="589" width="27" height="20" font="7">0.94</text>
+<text top="1003" left="92" width="425" height="22" font="6">Figure 1. Reading order of a band that contains a spanning table.</text>
+<text top="1025" left="92" width="311" height="22" font="6">Columns are read left to right inside each band.</text>
+</page>
+<page number="2" position="absolute" top="0" left="0" height="1188" width="918">
+<text top="33" left="296" width="326" height="19" font="0">Journal of Synthetic Layout Research, Vol. 3, No. 2, 2024</text>
+<text top="1124" left="455" width="9" height="23" font="1">2</text>
+<text top="103" left="92" width="167" height="27" font="5"><b>1. Column Ordering</b></text>
+<text top="131" left="92" width="269" height="22" font="6">Reading order is a property of the layout,</text>
+<text top="148" left="92" width="258" height="22" font="6">not of the content stream. A parser that</text>
+<text top="165" left="92" width="257" height="22" font="6">sorts glyphs by their y coordinate alone</text>
+<text top="183" left="92" width="264" height="22" font="6">will interleave the left and right columns</text>
+<text top="200" left="92" width="244" height="22" font="6">line by line, producing sentences that</text>
+<text top="217" left="92" width="295" height="22" font="6">alternate between two unrelated paragraphs.</text>
+<text top="234" left="92" width="281" height="22" font="6">Sorting by x first is equally wrong, because</text>
+<text top="252" left="92" width="232" height="22" font="6">it destroys the vertical flow inside a</text>
+<text top="269" left="92" width="295" height="22" font="6">column. The correct model cuts the page into</text>
+<text top="286" left="92" width="283" height="22" font="6">bands at spanning elements and then reads</text>
+<text top="304" left="92" width="277" height="22" font="6">each column of a band from top to bottom.</text>
+<text top="337" left="146" width="78" height="23" font="1">y = f(x) + x</text>
+<text top="337" left="416" width="19" height="23" font="1">(1)</text>
+<text top="368" left="92" width="236" height="22" font="6">Equations are detected before prose</text>
+<text top="386" left="92" width="252" height="22" font="6">assembly, because their glyph runs are</text>
+<text top="403" left="92" width="289" height="22" font="6">interleaved with superscripts and subscripts</text>
+<text top="420" left="92" width="288" height="22" font="6">that would otherwise fragment a paragraph.</text>
+<text top="437" left="92" width="271" height="22" font="6">LaTeX math fonts are a strong signal, and</text>
+<text top="455" left="92" width="264" height="22" font="6">the equation number at the right margin</text>
+<text top="472" left="92" width="269" height="22" font="6">confirms the block. The raw text is joined</text>
+<text top="489" left="92" width="249" height="22" font="6">in reading order without rewriting the</text>
+<text top="507" left="92" width="87" height="22" font="6">mathematics.</text>
+<text top="103" left="489" width="200" height="27" font="5"><b>2. Table Reconstruction</b></text>
+<text top="131" left="489" width="268" height="22" font="6">Table reconstruction needs cell geometry</text>
+<text top="148" left="489" width="275" height="22" font="6">rather than whitespace heuristics. When a</text>
+<text top="165" left="489" width="280" height="22" font="6">tabular block is drawn without ruling lines,</text>
+<text top="183" left="489" width="273" height="22" font="6">the only reliable signal is the alignment of</text>
+<text top="200" left="489" width="273" height="22" font="6">cell boxes across rows, combined with the</text>
+<text top="217" left="489" width="262" height="22" font="6">vertical gaps between cells inside a row.</text>
+<text top="234" left="489" width="294" height="22" font="6">Column anchors derived from those boxes let</text>
+<text top="252" left="489" width="294" height="22" font="6">a grid be rebuilt as Markdown, which is what</text>
+<text top="269" left="489" width="279" height="22" font="6">downstream parameter extraction expects.</text>
+<text top="977" left="92" width="93" height="27" font="5"><b>References</b></text>
+<text top="1007" left="92" width="413" height="20" font="7">[1] A. Author. Column-aware extraction. J. Layout, 12(3):1-20, 2021.</text>
+<text top="1025" left="92" width="395" height="20" font="7">[2] B. Author. Table grids from geometry. In Proc. DocEng, 2022.</text>
+<text top="1043" left="92" width="418" height="20" font="7">[3] C. Author. Equation recovery in PDF. PDF Journal, 8:44-59, 2023.</text>
+</page>
+</pdf2xml>

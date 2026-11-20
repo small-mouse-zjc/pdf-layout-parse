@@ -1,0 +1,8 @@
+=== reproduce.py run 2026-11-20T09:46:19Z ===
+python: Python 3.12.4
+poppler: pdftohtml version 24.02.0
+
+generated sample: ./examples/synthetic_two_column.pdf
+parse rc=0 0.64s :: {"ok": true, "out": "./results/work/result.json", "status": "success", "cou
+selfcheck PASS (0.31s)
+wrote results/metrics.json

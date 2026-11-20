@@ -1,0 +1,52 @@
+{
+  "arm_version": "1.1",
+  "paper": {
+    "title": "阅读01｜文献文档解析 — layout-aware PDF to structured JSON",
+    "challenge_id": "product-arena-08-3027d350"
+  },
+  "entrypoint": "src/reproduce.py",
+  "entrypoint_args": [
+    "--out",
+    "results"
+  ],
+  "environment": {
+    "python_version": "3.12",
+    "dependencies": "requirements.txt",
+    "gpu_required": false,
+    "estimated_runtime_minutes": 0.5
+  },
+  "execution": {
+    "log_path": "results/run.log",
+    "exit_code": 0,
+    "ran_at": "2026-11-20T09:45:00Z",
+    "wall_time_s": 180,
+    "artifacts": [
+      {
+        "id": "metrics",
+        "path": "results/metrics.json",
+        "type": "data",
+        "format": "json"
+      }
+    ]
+  },
+  "expected_outputs": [
+    {
+      "name": "metrics",
+      "type": "data",
+      "produced_by": [
+        "metrics"
+      ]
+    }
+  ],
+  "characterization": {
+    "path": "characterization.json"
+  },
+  "trace": "trace/trace.jsonl",
+  "data_sources": [],
+  "agents_used": [
+    {
+      "agent_id": "scimaster",
+      "role": "designed the layout algorithm, wrote and tested the skill"
+    }
+  ]
+}

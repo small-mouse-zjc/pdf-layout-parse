@@ -1,0 +1,27 @@
+=== self-test transcript (synthetic two-column sample, NOT a case answer) ===
+date: 2026-11-20T09:21:17Z
+python: Python 3.12.4 | poppler: pdftohtml version 24.02.0
+
+--- 1. parse ---
+{"ok": true, "out": "./result.json", "status": "success", "counts": {"title": 53, "authors": 2, "abstract": 528, "sections": 4, "tables": 1, "figures": 0, "equations": 1, "references": 3}, "evidence": 38, "uncertain": 0}
+--- 2. selfcheck ---
+  ok   schema: required keys, types and enums
+  ok   evidence: 38 rows, every non-empty field covered (13 distinct targets)
+  ok   status logic: success
+  ok   verbatim sanity
+
+4 ok, 0 warnings, 0 errors
+SELF-CHECK: PASS
+--- 3. baseline comparison ---
+### synthetic_two_column.pdf
+
+pages: 2 | body font: 19.0pt | pages with a detected gutter: 1
+
+| metric | stream order (baseline) | skill order |
+| --- | --- | --- |
+| lines with glyphs on both sides of the gutter (columns glued) | 15.9% | 0.0% |
+| column switches between consecutive lines (total; ~2 per band boundary is normal) | 1 | 4 |
+| order inversions inside a column (text read upwards) | 2.8% | 0.0% |
+| running heads / banners / folios left in the body | 4 | 0 |
+| lines offered to the reader | 78 | 86 |
+| characters offered to the reader | 3287 | 3159 |

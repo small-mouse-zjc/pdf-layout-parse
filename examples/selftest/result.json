@@ -1,0 +1,437 @@
+{
+  "case_id": "paper",
+  "parsed_result": {
+    "title": "Parsing Two-Column Papers Without Crossing the Gutter",
+    "authors": [
+      "A. Author, B. Author",
+      "C. Author"
+    ],
+    "abstract": "Two-column scientific layouts are common in engineering and life-science publishing, and naive text extraction walks straight across the gutter. This synthetic manuscript exercises a parser on a controllable layout: spanning title, spanning abstract, two body columns, a full-width table, a numbered display equation, a figure caption and a reference list. The intended reading order is column-major inside each band and top-to-bottom across bands. Margins carry a running banner and a folio that must never reach the body text.",
+    "sections": [
+      {
+        "heading": "1. Column Ordering",
+        "content": "Reading order is a property of the layout, not of the content stream. A parser that sorts glyphs by their y coordinate alone will interleave the left and right columns line by line, producing sentences that alternate between two unrelated paragraphs. Sorting by x first is equally wrong, because it destroys the vertical flow inside a column. The correct model cuts the page into bands at spanning elements and then reads each column of a band from top to bottom.",
+        "level": 1
+      },
+      {
+        "heading": "2. Table Reconstruction",
+        "content": "Table reconstruction needs cell geometry rather than whitespace heuristics. When a tabular block is drawn without ruling lines, the only reliable signal is the alignment of cell boxes across rows, combined with the vertical gaps between cells inside a row. Column anchors derived from those boxes let a grid be rebuilt as Markdown, which is what downstream parameter extraction expects.\n\nFigure 1. Reading order of a band that contains a spanning table.\n\nColumns are read left to right inside each band.",
+        "level": 1
+      },
+      {
+        "heading": "1. Column Ordering",
+        "content": "",
+        "level": 1
+      },
+      {
+        "heading": "2. Table Reconstruction",
+        "content": "Reading order is a property of the layout,\n\nTable reconstruction needs cell geometry not of the content stream. A parser that rather than whitespace heuristics. When a sorts glyphs by their y coordinate alone tabular block is drawn without ruling lines, will interleave the left and right columns the only reliable signal is the alignment of line by line, producing sentences that cell boxes across rows, combined with the alternate between two unrelated paragraphs. vertical gaps between cells inside a row. Sorting by x first is equally wrong, because\n\nColumn anchors derived from those boxes let it destroys the vertical flow inside a a grid be rebuilt as Markdown, which is what column. The correct model cuts the page into downstream parameter extraction expects. bands at spanning elements and then reads each column of a band from top to bottom.\n\nEquations are detected before prose assembly, because their glyph runs are interleaved with superscripts and subscripts that would otherwise fragment a paragraph.\n\nLaTeX math fonts are a strong signal, and the equation number at the right margin confirms the block. The raw text is joined in reading order without rewriting the mathematics.",
+        "level": 1
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "Table 1",
+        "caption": "Table 1. Measured layout statistics on three layouts. layout columns",
+        "markdown": "|  |  |  |\n| --- | --- | --- |\n| single | 1 | 0 |\n| two | 2 | 34 |\n| three | 3 | 18 |"
+      }
+    ],
+    "figures": [],
+    "equations": [
+      {
+        "eq_id": "Eq. (1)",
+        "raw_text": "y = f(x) + x"
+      }
+    ],
+    "references": [
+      "[1] A. Author. Column-aware extraction. J. Layout, 12(3):1-20, 2021.",
+      "[2] B. Author. Table grids from geometry. In Proc. DocEng, 2022.",
+      "[3] C. Author. Equation recovery in PDF. PDF Journal, 8:44-59, 2023."
+    ]
+  },
+  "evidence": [
+    {
+      "page": 1,
+      "block_bbox": [
+        144.0,
+        61.3,
+        624.7,
+        88.7
+      ],
+      "target_key": "title"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        183.3,
+        94.7,
+        359.3,
+        111.3
+      ],
+      "target_key": "authors"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        208.7,
+        115.3,
+        316.7,
+        128.7
+      ],
+      "target_key": "authors"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        208.7,
+        115.3,
+        316.7,
+        128.7
+      ],
+      "target_key": "authors.affiliation"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        144.0,
+        108.7,
+        162.0
+      ],
+      "target_key": "abstract"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        162.7,
+        476.0,
+        177.3
+      ],
+      "target_key": "abstract"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        174.0,
+        462.7,
+        188.7
+      ],
+      "target_key": "abstract"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        186.0,
+        449.3,
+        200.7
+      ],
+      "target_key": "abstract"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        197.3,
+        472.7,
+        212.0
+      ],
+      "target_key": "abstract"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        208.7,
+        482.7,
+        223.3
+      ],
+      "target_key": "abstract"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        220.7,
+        300.7,
+        235.3
+      ],
+      "target_key": "abstract"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        237.3,
+        172.7,
+        255.3
+      ],
+      "target_key": "sections[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        256.7,
+        258.0,
+        386.0
+      ],
+      "target_key": "sections[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        326.0,
+        237.3,
+        459.3,
+        255.3
+      ],
+      "target_key": "sections[1]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        326.0,
+        256.7,
+        522.0,
+        363.3
+      ],
+      "target_key": "sections[1]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        668.7,
+        344.7,
+        683.3
+      ],
+      "target_key": "sections[1]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        683.3,
+        268.7,
+        698.0
+      ],
+      "target_key": "sections[1]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        68.7,
+        172.7,
+        86.7
+      ],
+      "target_key": "sections[2]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        326.0,
+        68.7,
+        459.3,
+        86.7
+      ],
+      "target_key": "sections[3]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        87.3,
+        240.7,
+        102.0
+      ],
+      "target_key": "sections[3]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        87.3,
+        512.7,
+        170.7
+      ],
+      "target_key": "sections[3]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        156.0,
+        522.0,
+        217.3
+      ],
+      "target_key": "sections[3]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        245.3,
+        254.0,
+        294.7
+      ],
+      "target_key": "sections[3]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        291.3,
+        242.0,
+        352.7
+      ],
+      "target_key": "sections[3]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        604.0,
+        287.3,
+        618.7
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        628.7,
+        85.3,
+        642.0
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        169.3,
+        628.7,
+        174.7,
+        642.0
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        277.3,
+        628.7,
+        282.7,
+        642.0
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        641.3,
+        76.0,
+        654.7
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        169.3,
+        641.3,
+        174.7,
+        654.7
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        277.3,
+        641.3,
+        287.3,
+        654.7
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        61.3,
+        654.7,
+        82.7,
+        668.0
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        169.3,
+        654.7,
+        174.7,
+        668.0
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 1,
+      "block_bbox": [
+        277.3,
+        654.7,
+        287.3,
+        668.0
+      ],
+      "target_key": "tables[0]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        97.3,
+        224.7,
+        149.3,
+        240.0
+      ],
+      "target_key": "equations[0]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        671.3,
+        340.0,
+        708.7
+      ],
+      "target_key": "references[0]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        671.3,
+        340.0,
+        708.7
+      ],
+      "target_key": "references[1]"
+    },
+    {
+      "page": 2,
+      "block_bbox": [
+        61.3,
+        671.3,
+        340.0,
+        708.7
+      ],
+      "target_key": "references[2]"
+    }
+  ],
+  "uncertain_items": [],
+  "run_status": "success",
+  "status_reason": "Coordinate-driven parse of 2 pages (body font 19.0pt). Column gutters found on 1 page(s) [1]; reading order is band-then-column, so spans (title, full-width tables) stay in place and no line crosses the gutter. 4 marginal blocks removed (running heads, journal banners, folios, side stamps); 0 figure-internal vector label lines masked; 1 tables rebuilt as grids, 1 display equations recovered before prose assembly, 1 references segmented. 38 evidence rows bind every field to page+bbox. run_status=success."
+}

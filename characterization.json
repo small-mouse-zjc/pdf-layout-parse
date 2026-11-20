@@ -1,0 +1,24 @@
+{
+  "scope": "This artifact is a parsing Skill, not a reproduction of one paper. The deviations below are measured between the skill's output and the source documents it was run on, which is the only reference truth that exists for a layout task.",
+  "empirical_envelope": [
+    "Two-column and single-column English journal/conference layouts with an embedded text layer (poppler-decodable).",
+    "Tested range: 2-15 pages, body font 15-19 pt, 0-3 gutters per page, 0-6 tables, 0-6 numbered equations per document.",
+    "Runtime 0.6-1.7 s per document on one core; no model calls, no network."
+  ],
+  "deviations_from_paper": [
+    {"target": "references_recovered_resnet", "metric": "absolute_error", "actual_value": 50, "reference_value": 51, "score": 0.98, "note": "arXiv:1512.03385; the final entry has no [n] marker and is not split out"},
+    {"target": "cross_column_line_rate_resnet", "metric": "absolute_error", "actual_value": 0.001, "reference_value": 0.0, "score": 0.999, "note": "measured by scripts/layout_bench.py"},
+    {"target": "order_inversion_rate_resnet", "metric": "absolute_error", "actual_value": 0.0, "reference_value": 0.0, "score": 1.0},
+    {"target": "marginalia_left_in_body_resnet", "metric": "absolute_error", "actual_value": 0, "reference_value": 0, "score": 1.0},
+    {"target": "figure3_caption_words", "metric": "absolute_error", "actual_value": 19, "reference_value": 25, "score": 0.76, "note": "ResNet Fig. 3 caption loses a mid-caption fragment split by a wide space"},
+    {"target": "resnet_table1_columns", "metric": "absolute_error", "actual_value": 6, "reference_value": 7, "score": 0.857, "note": "dense borderless 10 pt grid merges two adjacent columns"},
+    {"target": "synthetic_two_column_structure", "metric": "exact_match", "actual_value": 1, "reference_value": 1, "score": 1.0, "note": "4 sections, 1 table grid, 1 numbered equation, 3 references recovered verbatim"}
+  ],
+  "failure_modes": [
+    {"mode": "Dense borderless table with <2 em column gaps", "impact": "adjacent columns merge in the markdown grid; caption and data rows survive", "evidence_artifact": "reference/measured_results.md"},
+    {"mode": "Caption fragment separated by a wide space and sharing the figure baseline", "impact": "a few caption words are dropped (6 of 25 in ResNet Fig. 3)", "evidence_artifact": "reference/measured_results.md"},
+    {"mode": "PDF whose fonts carry no ToUnicode mapping (private-use / CID codes)", "impact": "text is unreadable by any extractor; the skill returns cannot_judge instead of emitting glyph ids", "evidence_artifact": "reference/troubleshooting.md"},
+    {"mode": "Scanned page with no text layer", "impact": "cannot_judge; no OCR is attempted", "evidence_artifact": "reference/troubleshooting.md"},
+    {"mode": "Subscripts and superscripts", "impact": "emitted as concatenated glyphs (Wi, not W_i); verbatim fidelity is preferred over semantic rewriting", "evidence_artifact": "reference/algorithm.md"}
+  ]
+}

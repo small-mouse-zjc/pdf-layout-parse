@@ -1,0 +1,4 @@
+pypdf>=3.0
+numpy>=1.24   # optional: faster coverage profile (auto-degrades if absent)
+Pillow>=9.0  # optional: only for scripts/bbox_overlay.py
+matplotlib>=3.6  # only for examples/gen_synthetic.py, used by src/reproduce.py
