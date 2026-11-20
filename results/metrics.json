@@ -13,9 +13,9 @@
     "evidence_rows": 38
   },
   "timing_s": {
-    "parse": 0.643,
-    "selfcheck": 0.313,
-    "total": 9.534
+    "parse": 0.324,
+    "selfcheck": 0.23,
+    "total": 2.063
   },
   "layout_gain": {
     "pages": 2,

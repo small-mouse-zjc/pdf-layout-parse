@@ -34,6 +34,7 @@ import re
 import statistics
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass, field
 from typing import Iterable, Sequence
 
@@ -1442,11 +1443,10 @@ def build_result(pdf: str, case_id: str, debug: bool = False):
                        "read and reading order cannot be established.",
                        "whole document", "missing binary: pdftohtml")
 
-    xml_path = os.path.join(os.path.dirname(os.path.abspath(pdf)), "_pdf_struct.xml")
+    # never write into the input directory: it is frequently read-only (/input)
+    xml_dir = tempfile.mkdtemp(prefix="pdf_struct_")
+    xml_path = os.path.join(xml_dir, "doc.xml")
     cp = run(["pdftohtml", "-xml", "-hidden", "-i", "-q", pdf, xml_path])
-    if not os.path.exists(xml_path):
-        xml_path = os.path.join("/tmp", f"_pdf_struct_{os.getpid()}.xml")
-        cp = run(["pdftohtml", "-xml", "-hidden", "-i", "-q", pdf, xml_path])
     if not os.path.exists(xml_path):
         return verdict("cannot_judge", f"pdftohtml failed: {cp.stderr[:300]}",
                        "whole document", "layout extraction failed")
